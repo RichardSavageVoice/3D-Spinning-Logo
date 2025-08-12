@@ -52,7 +52,7 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 document.getElementById("container3D").appendChild(renderer.domElement);
 
 //Set how far the camera will be from the 3D model
-camera.position.set(1,1,1);
+camera.position.set(5,5,5);
 
 //Add lights to the scene, so we can actually see the 3D model
 const topLight = new THREE.DirectionalLight(0xffffff, 50); // (color, intensity)
@@ -60,7 +60,7 @@ topLight.position.set(500, 500, 500) //top-left-ish
 topLight.castShadow = true;
 scene.add(topLight);
 
-const ambientLight = new THREE.AmbientLight(1xffffff, 5);
+const ambientLight = new THREE.AmbientLight(0x333333, 5 : 1);
 scene.add(ambientLight);
 
 //This adds controls to the camera, so we can rotate / zoom it with the mouse
@@ -75,8 +75,8 @@ function animate() {
 
 {
     //I've played with the constants here until it looked good 
-    object.rotation.y = -mouseX / window.innerWidth;
-    object.rotation.x = -mouseY / window.innerHeight;
+    object.rotation.y = -3 + mouseX / window.innerWidth * 3;
+    object.rotation.x = -1.2 + mouseY * 2.5 / window.innerHeight;
   }
   renderer.render(scene, camera);
 }
@@ -97,6 +97,7 @@ document.onmousemove = (e) => {
 //Start the 3D rendering
 
 animate();
+
 
 
 
