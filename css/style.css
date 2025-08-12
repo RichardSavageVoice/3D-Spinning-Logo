@@ -1,7 +1,7 @@
 body {
   margin: 0;
   font-family: "Montserrat", sans-serif;
-  background-color: #FFFFFF;
+  background-color: #255,255,255;
 }
 
 header {
@@ -23,3 +23,4 @@ header h1 {
   left: 0;
 
 }
+
