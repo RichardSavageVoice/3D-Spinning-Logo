@@ -19,7 +19,8 @@ loader.load(
   `./models/${objToRender}`,
   function (gltf) {
     object = gltf.scene;
-    object.scale.set(2, 2, 2); // Scale up the model
+    object.scale.set(4, 4, 4); // Scale up the model
+    object.rotation.x = Math.PI / 2; // Rotate 90 degrees clockwise
     scene.add(object);
   },
   function (xhr) {
@@ -38,7 +39,7 @@ document.getElementById("container3D").appendChild(renderer.domElement);
 camera.position.set(1, 1, 10);
 
 // Less intense lighting
-const topLight = new THREE.DirectionalLight(0xffffff, 2); // Lowered intensity
+const topLight = new THREE.DirectionalLight(0xffffff, 1); // Lowered intensity
 topLight.position.set(500, 500, 500);
 topLight.castShadow = true;
 scene.add(topLight);
@@ -69,3 +70,4 @@ document.onmousemove = (e) => {
 }
 
 animate();
+
