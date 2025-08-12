@@ -28,7 +28,7 @@ const loader = new GLTFLoader();
 
 //Load the file
 loader.load(
-  `./models/BlenderLogov6.glb`,
+  `./models/${objToRender}`,
   function (gltf) {
     //If the file is loaded, add it to the scene
     object = gltf.scene;
@@ -52,28 +52,27 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 document.getElementById("container3D").appendChild(renderer.domElement);
 
 //Set how far the camera will be from the 3D model
-camera.position.set(1,1,10);
+camera.position.set(1, 1, 10);
 
 //Add lights to the scene, so we can actually see the 3D model
 const topLight = new THREE.DirectionalLight(0xffffff, 50); // (color, intensity)
-topLight.position.set(500, 500, 500) //top-left-ish
+topLight.position.set(500, 500, 500); //top-left-ish
 topLight.castShadow = true;
 scene.add(topLight);
 
-const ambientLight = new THREE.AmbientLight(0x333333, 5 : 1);
+const ambientLight = new THREE.AmbientLight(0x333333, 5); // Corrected intensity value
 scene.add(ambientLight);
 
 //This adds controls to the camera, so we can rotate / zoom it with the mouse
-{
-  controls = new OrbitControls(camera, renderer.domElement);
-}
+controls = new OrbitControls(camera, renderer.domElement);
 
 //Render the scene
 function animate() {
   requestAnimationFrame(animate);
   //Here we could add some code to update the scene, adding some automatic movement
 
-{
+  // Prevent errors if object is not yet loaded
+  if (object) {
     //I've played with the constants here until it looked good 
     object.rotation.y = -3 + mouseX / window.innerWidth * 3;
     object.rotation.x = -1.2 + mouseY * 2.5 / window.innerHeight;
@@ -97,32 +96,3 @@ document.onmousemove = (e) => {
 //Start the 3D rendering
 
 animate();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
