@@ -96,4 +96,5 @@ document.onmousemove = (e) => {
 }
 
 //Start the 3D rendering
+
 animate();
