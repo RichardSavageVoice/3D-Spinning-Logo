@@ -52,10 +52,10 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 document.getElementById("container3D").appendChild(renderer.domElement);
 
 //Set how far the camera will be from the 3D model
-camera.position.set(2,2,2);
+camera.position.set(1,1,1);
 
 //Add lights to the scene, so we can actually see the 3D model
-const topLight = new THREE.DirectionalLight(0xffffff, 20); // (color, intensity)
+const topLight = new THREE.DirectionalLight(0xffffff, 50); // (color, intensity)
 topLight.position.set(500, 500, 500) //top-left-ish
 topLight.castShadow = true;
 scene.add(topLight);
@@ -75,8 +75,8 @@ function animate() {
 
 {
     //I've played with the constants here until it looked good 
-    object.rotation.y = mouseX / window.innerWidth * 3;
-    object.rotation.x = mouseY * 2.5 / window.innerHeight;
+    object.rotation.y = -mouseX / window.innerWidth * 3;
+    object.rotation.x = -mouseY * 2.5 / window.innerHeight;
   }
   renderer.render(scene, camera);
 }
@@ -97,6 +97,7 @@ document.onmousemove = (e) => {
 //Start the 3D rendering
 
 animate();
+
 
 
 
