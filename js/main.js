@@ -60,7 +60,7 @@ topLight.position.set(500, 500, 500) //top-left-ish
 topLight.castShadow = true;
 scene.add(topLight);
 
-const ambientLight = new THREE.AmbientLight(1xffffff);
+const ambientLight = new THREE.AmbientLight(0xffffff, 50);
 scene.add(ambientLight);
 
 //This adds controls to the camera, so we can rotate / zoom it with the mouse
@@ -75,8 +75,8 @@ function animate() {
 
 {
     //I've played with the constants here until it looked good 
-    object.rotation.y = -mouseX / window.innerWidth * 3;
-    object.rotation.x = -mouseY * 2.5 / window.innerHeight;
+    object.rotation.y = -mouseX / window.innerWidth;
+    object.rotation.x = -mouseY / window.innerHeight;
   }
   renderer.render(scene, camera);
 }
@@ -97,6 +97,7 @@ document.onmousemove = (e) => {
 //Start the 3D rendering
 
 animate();
+
 
 
 
