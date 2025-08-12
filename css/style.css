@@ -7,7 +7,7 @@ body {
 header {
   margin-top: 3em;
   text-align: center;
-  color: white;
+  color: #1D1D1B;
 }
 
 header h1 {
@@ -21,4 +21,5 @@ header h1 {
   position: absolute;
   top: 0;
   left: 0;
+
 }
