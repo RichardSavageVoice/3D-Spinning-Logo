@@ -3,15 +3,31 @@ import * as THREE from "https://cdn.skypack.dev/three@0.129.0/build/three.module
 import { OrbitControls } from "https://cdn.skypack.dev/three@0.129.0/examples/jsm/controls/OrbitControls.js";
 import { GLTFLoader } from "https://cdn.skypack.dev/three@0.129.0/examples/jsm/loaders/GLTFLoader.js";
 
+// --- ISOMETRIC CAMERA SETUP ---
+const aspect = window.innerWidth / window.innerHeight;
+const frustumSize = 10; // Adjust to zoom in/out
+
+const camera = new THREE.OrthographicCamera(
+  frustumSize * aspect / -2, // left
+  frustumSize * aspect / 2,  // right
+  frustumSize / 2,           // top
+  frustumSize / -2,          // bottom
+  0.1,                       // near
+  1000                       // far
+);
+
+// Classic isometric (x=y=z, looking at origin)
+camera.position.set(10, 10, 10);
+camera.lookAt(0, 0, 0);
+
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 
 let object;
 let controls;
 let objToRender = 'BlenderLogov6.glb';
 const loader = new GLTFLoader();
 
-// Normalized mouse coordinates (-1 to +1)
+// Mouse tracking for rotation
 let mouseNormX = 0;
 let mouseNormY = 0;
 
@@ -19,8 +35,11 @@ loader.load(
   `./models/${objToRender}`,
   function (gltf) {
     object = gltf.scene;
-    object.scale.set(3, 3, 3); // Scale up the model
-    object.rotation.x = Math.PI / 2; // Rotate 90 degrees clockwise
+    object.scale.set(2, 2, 2); // Scale up the model
+
+    // Rotate 90 degrees clockwise on X axis
+    object.rotation.x = Math.PI / 2;
+
     scene.add(object);
   },
   function (xhr) {
@@ -36,30 +55,40 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 
 document.getElementById("container3D").appendChild(renderer.domElement);
 
-camera.position.set(1, 1, 10);
-
 // Less intense lighting
 const topLight = new THREE.DirectionalLight(0xffffff, 2); // Lowered intensity
 topLight.position.set(500, 500, 500);
 topLight.castShadow = true;
 scene.add(topLight);
 
-const ambientLight = new THREE.AmbientLight(0x333333, 1.5); // Lowered intensity
+const ambientLight = new THREE.AmbientLight(0x333333, 0.7); // Lowered intensity
 scene.add(ambientLight);
 
+// OrbitControls for isometric view (optional: restrict rotation/zoom for strict isometric)
 controls = new OrbitControls(camera, renderer.domElement);
+controls.enableZoom = false;
+// Optionally restrict to isometric angle only
+controls.minPolarAngle = controls.maxPolarAngle = Math.acos(1/Math.sqrt(3));
+controls.minAzimuthAngle = controls.maxAzimuthAngle = Math.PI/4;
 
+// Animation loop
 function animate() {
   requestAnimationFrame(animate);
   if (object) {
-    object.rotation.y = mouseNormX * Math.PI * 0.25; // Follow mouse horizontally
-    object.rotation.x = mouseNormY * Math.PI * 0.15; // Follow mouse vertically
+    // Isometric, so you may want to limit mouse-based rotation, but here is how:
+    object.rotation.y = mouseNormX * Math.PI * 0.25;
+    object.rotation.z = mouseNormY * Math.PI * 0.15;
   }
   renderer.render(scene, camera);
 }
 
+// Window resize for orthographic camera
 window.addEventListener("resize", function () {
-  camera.aspect = window.innerWidth / window.innerHeight;
+  const aspect = window.innerWidth / window.innerHeight;
+  camera.left = frustumSize * aspect / -2;
+  camera.right = frustumSize * aspect / 2;
+  camera.top = frustumSize / 2;
+  camera.bottom = frustumSize / -2;
   camera.updateProjectionMatrix();
   renderer.setSize(window.innerWidth, window.innerHeight);
 });
@@ -70,5 +99,3 @@ document.onmousemove = (e) => {
 }
 
 animate();
-
-
