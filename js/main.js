@@ -35,7 +35,7 @@ loader.load(
   `./models/${objToRender}`,
   function (gltf) {
     object = gltf.scene;
-    object.scale.set(2, 2, 2); // Scale up the model
+    object.scale.set(1, 1, 1); // Scale up the model
 
     // Rotate 90 degrees clockwise on X axis
     object.rotation.x = Math.PI / 2;
@@ -56,12 +56,12 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 document.getElementById("container3D").appendChild(renderer.domElement);
 
 // Less intense lighting
-const topLight = new THREE.DirectionalLight(0xffffff, 2); // Lowered intensity
+const topLight = new THREE.DirectionalLight(0xffffff, 5); // Lowered intensity
 topLight.position.set(500, 500, 500);
 topLight.castShadow = true;
 scene.add(topLight);
 
-const ambientLight = new THREE.AmbientLight(0x333333, 0.7); // Lowered intensity
+const ambientLight = new THREE.AmbientLight(0x333333, 1.5); // Lowered intensity
 scene.add(ambientLight);
 
 // OrbitControls for isometric view (optional: restrict rotation/zoom for strict isometric)
@@ -99,3 +99,4 @@ document.onmousemove = (e) => {
 }
 
 animate();
+
