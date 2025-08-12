@@ -76,8 +76,8 @@ function animate() {
   //Make the eye move
 {
     //I've played with the constants here until it looked good 
-    object.rotation.y = -3 + mouseX / window.innerWidth * 3;
-    object.rotation.x = -1.2 + mouseY * 2.5 / window.innerHeight;
+    object.rotation.x = -3 + mouseX / window.innerWidth * 3;
+    object.rotation.y = -1.2 + mouseY * 2.5 / window.innerHeight;
   }
   renderer.render(scene, camera);
 }
@@ -98,6 +98,7 @@ document.onmousemove = (e) => {
 //Start the 3D rendering
 
 animate();
+
 
 
 
