@@ -230,10 +230,10 @@
 			"camera":0,
 			"name":"Camera",
 			"rotation":[
-				10,
+				0.2588,
 				0,
 				0,
-				0
+				0.9659
 			],
 			"scale":[
 				1,
