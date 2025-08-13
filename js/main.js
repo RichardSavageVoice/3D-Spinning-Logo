@@ -73,9 +73,9 @@ fillLight.position.set(-4, 2, 2);
 scene.add(fillLight);
 
 // Rim/Back Light - from behind for silhouette highlight
-const rimLight = new THREE.DirectionalLight(0xffffff, 0.7);
-rimLight.position.set(0, 5, -10);
-scene.add(rimLight);
+// const rimLight = new THREE.DirectionalLight(0xffffff, 0.7);
+// rimLight.position.set(0, 5, -10);
+// scene.add(rimLight);
 
 // Ambient Light - subtle grey to soften shadows
 const ambientLight = new THREE.AmbientLight(0x404040, 0.6);
@@ -149,5 +149,6 @@ window.addEventListener("resize", function () {
 });
 
 animate();
+
 
 
