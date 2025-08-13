@@ -32,7 +32,7 @@ let mouseNormX = 0;
 let mouseNormY = 0;
 
 loader.load(
-  `./models/${objToRender}`,
+  `./models/BlenderLogov6.glb`,
   function (gltf) {
     object = gltf.scene;
     object.scale.set(1, 1, 1); // Scale up the model
@@ -65,6 +65,7 @@ scene.add(ambientLight);
 
 // OrbitControls for isometric view (optional: restrict rotation/zoom for strict isometric)
 controls = new OrbitControls(camera, renderer.domElement);
+controls.enableRotate = true;
 controls.enableZoom = false;
 // Optionally restrict to isometric angle only
 controls.minPolarAngle = controls.maxPolarAngle = Math.acos(1/Math.sqrt(3));
@@ -98,6 +99,7 @@ document.onmousemove = (e) => {
 }
 
 animate();
+
 
 
 
