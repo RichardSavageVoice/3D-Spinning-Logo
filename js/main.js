@@ -17,7 +17,7 @@ const camera = new THREE.OrthographicCamera(
 );
 
 // Set a good default "3D" view (isometric-like, but now orbitable)
-camera.position.set(0, -30, 10);
+camera.position.set(0, -5, 10);
 camera.lookAt(0, 0, 0);
 
 // Set a light neutral background for contrast against black model
@@ -62,7 +62,7 @@ document.getElementById("container3D").appendChild(renderer.domElement);
 
 // --- LIGHTING SETUP ---
 // Key Light - strong white from above and side
-const keyLight = new THREE.DirectionalLight(0xffffff, 1);
+const keyLight = new THREE.DirectionalLight(0xffffff, 0.8);
 keyLight.position.set(2, 8, 6);
 keyLight.castShadow = true;
 scene.add(keyLight);
@@ -149,6 +149,7 @@ window.addEventListener("resize", function () {
 });
 
 animate();
+
 
 
 
