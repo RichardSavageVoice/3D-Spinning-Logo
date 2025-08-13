@@ -17,7 +17,7 @@ const camera = new THREE.OrthographicCamera(
 );
 
 // Set a good default "3D" view (isometric-like, but now orbitable)
-camera.position.set(-10, 10, 10);
+camera.position.set(0, 30, 10);
 camera.lookAt(0, 0, 0);
 
 // Set a light neutral background for contrast against black model
@@ -149,6 +149,7 @@ window.addEventListener("resize", function () {
 });
 
 animate();
+
 
 
 
