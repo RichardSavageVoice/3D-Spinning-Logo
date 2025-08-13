@@ -62,13 +62,13 @@ document.getElementById("container3D").appendChild(renderer.domElement);
 
 // --- LIGHTING SETUP ---
 // Key Light - strong white from above and side
-// const keyLight = new THREE.DirectionalLight(0xffffff, 0.8);
-// keyLight.position.set(2, 8, 6);
-// keyLight.castShadow = true;
-// scene.add(keyLight);
+const keyLight = new THREE.DirectionalLight(0xffffff, 1);
+keyLight.position.set(2, 8, 6);
+keyLight.castShadow = true;
+scene.add(keyLight);
 
 // Fill Light - softer, opposite side
-const fillLight = new THREE.DirectionalLight(0xffffff, 1);
+const fillLight = new THREE.DirectionalLight(0xffffff, 2);
 fillLight.position.set(-4, 2, 2);
 scene.add(fillLight);
 
@@ -78,7 +78,7 @@ scene.add(fillLight);
 // scene.add(rimLight);
 
 // Ambient Light - subtle grey to soften shadows
-const ambientLight = new THREE.AmbientLight(0x404040, 1);
+const ambientLight = new THREE.AmbientLight(0x404040, 2);
 scene.add(ambientLight);
 
 // OPTIONAL: Spotlight from above for extra focus (can be commented out)
@@ -149,6 +149,7 @@ window.addEventListener("resize", function () {
 });
 
 animate();
+
 
 
 
