@@ -53,7 +53,7 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 document.getElementById("container3D").appendChild(renderer.domElement);
 
 // Less intense lighting
-const topLight = new THREE.DirectionalLight(0xffffff, 5); // Lowered intensity
+const topLight = new THREE.DirectionalLight(0xffffff, 1); // Lowered intensity
 topLight.position.set(500, 500, 500);
 topLight.castShadow = true;
 scene.add(topLight);
@@ -93,3 +93,4 @@ window.addEventListener("resize", function () {
 });
 
 animate();
+
