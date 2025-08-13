@@ -1,19 +1,22 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <title>richardsavagevoice.com</title>
-    <link rel="stylesheet" href="css/style.css" />
-  </head>
-  <body>
-    <header>
-      <h1>A simple three.js app</h1>
-    </header>
-    
-    <main>
-      <div id="container3D"></div>
-    </main>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RichardSavageVoiceLogo3D</title>
+    <style>
+   model-viewer {
+       width: 100vw;
+       height: 100vh;
+   }
+</style>
+</head>
+<body>
 
-    <script type="module" src="js/main.js"></script>
-  </body>
+<!-- Use it like any other HTML element -->
+<model-viewer src="./models/richardsavagevoicelogo3D/scene.gltf" ar ar-modes="webxr scene-viewer quick-look" camera-controls tone-mapping="neutral" poster="poster.webp" shadow-intensity="1" camera-orbit="34.75deg 86.86deg 10.63m" field-of-view="30deg" auto-rotate camera-target="0m 0.563m 0m"> </model-viewer>
+
+<!-- Import the component -->
+<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+</body>
 </html>
