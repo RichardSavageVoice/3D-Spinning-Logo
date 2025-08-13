@@ -35,8 +35,7 @@ loader.load(
     object = gltf.scene;
     object.scale.set(1, 1, 1);
 
-    // Set model orientation: convert Blender Z-up to Three.js Y-up
-    object.rotation.x = -Math.PI / 2;
+
 
     // OPTIONAL: tweak material for better highlight on black surfaces
     object.traverse((child) => {
@@ -81,7 +80,7 @@ rimLight.position.set(0, 5, -10);
 scene.add(rimLight);
 
 // Ambient Light - subtle grey to soften shadows
-const ambientLight = new THREE.AmbientLight(0x404040, 0.6);
+const ambientLight = new THREE.AmbientLight(0x404040, 0.8);
 scene.add(ambientLight);
 
 // OPTIONAL: Spotlight from above for extra focus (can be commented out)
@@ -122,5 +121,6 @@ window.addEventListener("resize", function () {
 });
 
 animate();
+
 
 
