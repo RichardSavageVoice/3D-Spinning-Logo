@@ -68,9 +68,9 @@ document.getElementById("container3D").appendChild(renderer.domElement);
 // scene.add(keyLight);
 
 // Fill Light - softer, opposite side
-// const fillLight = new THREE.DirectionalLight(0xffffff, 0.5);
-// fillLight.position.set(-4, 2, 2);
-// scene.add(fillLight);
+const fillLight = new THREE.DirectionalLight(0xffffff, 0.5);
+fillLight.position.set(-4, 2, 2);
+scene.add(fillLight);
 
 // Rim/Back Light - from behind for silhouette highlight
 // const rimLight = new THREE.DirectionalLight(0xffffff, 0.7);
@@ -149,6 +149,7 @@ window.addEventListener("resize", function () {
 });
 
 animate();
+
 
 
 
