@@ -60,7 +60,7 @@ topLight.position.set(500, 500, 500);
 topLight.castShadow = true;
 scene.add(topLight);
 
-const ambientLight = new THREE.AmbientLight(0x333333, 1.5); // Lowered intensity
+const ambientLight = new THREE.AmbientLight(0x333333, 1); // Lowered intensity
 scene.add(ambientLight);
 
 // OrbitControls for isometric view (optional: restrict rotation/zoom for strict isometric)
@@ -99,6 +99,7 @@ document.onmousemove = (e) => {
 }
 
 animate();
+
 
 
 
