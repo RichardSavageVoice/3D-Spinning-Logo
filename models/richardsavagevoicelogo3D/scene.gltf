@@ -39,7 +39,7 @@
 				1,
 				2,
 				3,
-				4,
+				4,					
 				9,
 				10,
 				11,
@@ -588,18 +588,20 @@
 			}
 		},
 		{
-			"doubleSided":true,
-			"name":"Image Felt.001",
-			"pbrMetallicRoughness":{
-				"baseColorFactor":[
-					0,
-					0,
-					0,
-					1
-				],
-				"metallicFactor":0
+		  "doubleSided": true,
+ 		  "name": "Image Felt.001",
+          "pbrMetallicRoughness": {
+    		   "baseColorFactor": [0, 0, 0, 1],
+			    "metallicFactor": 0,
+			    "roughnessFactor": 1
 			}
-		},
+		}
+ "textures": [
+    { "source": 0 }
+  ],
+  "images": [
+    { "uri": "Roma-Velvet$Black_z.jpg" }
+  ],
 		{
 			"doubleSided":true,
 			"name":"Silk Outerband.001",
@@ -901,6 +903,11 @@
 			"mimeType":"image/png",
 			"name":"moonless_golf_4k",
 			"uri":"moonless_golf_4k.png"
+		},
+		{
+			"mimeType":"image/png",
+			"name":"Roma-Velvet$Black_z",
+			"uri":"Roma-Velvet$Black_z.png"
 		}
 	],
 	"skins":[
