@@ -5,7 +5,7 @@ import { GLTFLoader } from "https://cdn.skypack.dev/three@0.129.0/examples/jsm/l
 
 // --- ISOMETRIC CAMERA SETUP ---
 const aspect = window.innerWidth / window.innerHeight;
-const frustumSize = 10; // Adjust to zoom in/out
+const frustumSize = 5; // Adjust to zoom in/out
 
 const camera = new THREE.OrthographicCamera(
   frustumSize * aspect / -2, // left
@@ -98,6 +98,7 @@ document.onmousemove = (e) => {
 }
 
 animate();
+
 
 
 
