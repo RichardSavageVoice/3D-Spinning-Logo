@@ -596,11 +596,6 @@
 			    "roughnessFactor": 1
 			}
 		}
- "textures": [
-    { "source": 0 }
-  ],
-  "images": [
-    { "uri": "Roma-Velvet$Black_z.jpg" }
   ],
 		{
 			"doubleSided":true,
