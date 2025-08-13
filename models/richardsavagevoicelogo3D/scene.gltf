@@ -23,7 +23,7 @@
 						1,
 						1
 					],
-					"intensity":100,
+					"intensity":10,
 					"type":"point",
 					"name":"Point"
 				}
@@ -39,7 +39,7 @@
 				1,
 				2,
 				3,
-				4,					
+				4,
 				9,
 				10,
 				11,
@@ -230,20 +230,20 @@
 			"camera":0,
 			"name":"Camera",
 			"rotation":[
-				0,
-				0,
-				0,
-				0
+				-0.233642578125,
+				0.821373701095581,
+				0.1825135499238968,
+				0.48728352785110474
 			],
 			"scale":[
-				1,
-				1,
-				1
+				0.9559828042984009,
+				0.9559826254844666,
+				0.955982506275177
 			],
 			"translation":[
-				0,
-				0,
-				0
+				3.3362298011779785,
+				3.576493740081787,
+				-2.1154417991638184
 			]
 		},
 		{
@@ -588,15 +588,18 @@
 			}
 		},
 		{
-		  "doubleSided": true,
- 		  "name": "Image Felt.001",
-          "pbrMetallicRoughness": {
-    		   "baseColorFactor": [0, 0, 0, 1],
-			    "metallicFactor": 0,
-			    "roughnessFactor": 1
+			"doubleSided":true,
+			"name":"Image Felt.001",
+			"pbrMetallicRoughness":{
+				"baseColorFactor":[
+					0,
+					0,
+					0,
+					1
+				],
+				"metallicFactor":0
 			}
-		}
-  ],
+		},
 		{
 			"doubleSided":true,
 			"name":"Silk Outerband.001",
@@ -898,11 +901,6 @@
 			"mimeType":"image/png",
 			"name":"moonless_golf_4k",
 			"uri":"moonless_golf_4k.png"
-		},
-		{
-			"mimeType":"image/png",
-			"name":"Roma-Velvet$Black_z",
-			"uri":"Roma-Velvet$Black_z.png"
 		}
 	],
 	"skins":[
