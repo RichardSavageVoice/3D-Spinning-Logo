@@ -68,7 +68,7 @@ document.getElementById("container3D").appendChild(renderer.domElement);
 // scene.add(keyLight);
 
 // Fill Light - softer, opposite side
-const fillLight = new THREE.DirectionalLight(0xffffff, 0.5);
+const fillLight = new THREE.DirectionalLight(0xffffff, 0.7);
 fillLight.position.set(-4, 2, 2);
 scene.add(fillLight);
 
@@ -78,7 +78,7 @@ scene.add(fillLight);
 // scene.add(rimLight);
 
 // Ambient Light - subtle grey to soften shadows
-const ambientLight = new THREE.AmbientLight(0x404040, 0.6);
+const ambientLight = new THREE.AmbientLight(0x404040, 0.8);
 scene.add(ambientLight);
 
 // OPTIONAL: Spotlight from above for extra focus (can be commented out)
@@ -149,6 +149,7 @@ window.addEventListener("resize", function () {
 });
 
 animate();
+
 
 
 
