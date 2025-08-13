@@ -24,7 +24,7 @@ const scene = new THREE.Scene();
 
 let object;
 let controls;
-let objToRender = 'BlenderLogov6.glb';
+let objToRender = 'BlenderLogov6-1.glb';
 const loader = new GLTFLoader();
 
 // Mouse tracking for rotation
@@ -32,7 +32,7 @@ let mouseNormX = 0;
 let mouseNormY = 0;
 
 loader.load(
-  `./models/BlenderLogov6.glb`,
+  `./BlenderLogov6-1.glb`,
   function (gltf) {
     object = gltf.scene;
     object.scale.set(1, 1, 1); // Scale up the model
@@ -99,6 +99,7 @@ document.onmousemove = (e) => {
 }
 
 animate();
+
 
 
 
