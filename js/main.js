@@ -38,7 +38,7 @@ loader.load(
     object.scale.set(1, 1, 1); // Scale up the model
 
     // Rotate 90 degrees clockwise on X axis
-    object.rotation.x = Math.PI / 2;
+    object.rotation.y = Math.PI / 2;
 
     scene.add(object);
   },
@@ -99,4 +99,5 @@ document.onmousemove = (e) => {
 }
 
 animate();
+
 
