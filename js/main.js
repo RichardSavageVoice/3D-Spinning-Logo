@@ -35,8 +35,6 @@ loader.load(
     object = gltf.scene;
     object.scale.set(1, 1, 1);
 
-
-
     // OPTIONAL: tweak material for better highlight on black surfaces
     object.traverse((child) => {
       if (child.isMesh) {
@@ -102,10 +100,40 @@ controls.enablePan = false; // disable panning for a cleaner experience
 // controls.minPolarAngle = controls.maxPolarAngle = Math.acos(1 / Math.sqrt(3));
 // controls.minAzimuthAngle = controls.maxAzimuthAngle = Math.PI / 4;
 
+// --- Mouse-follow feature variables ---
+let targetRotation = { x: 0, y: 0 };
+let currentRotation = { x: 0, y: 0 };
+const rotationSpeed = 0.08; // Adjust for smoothness
+
+function onMouseMove(event) {
+  // Get normalized mouse position (-1 to 1)
+  const mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+  const mouseY = (event.clientY / window.innerHeight) * 2 - 1;
+
+  // Map mouseX to rotation around Y axis, mouseY to rotation around X axis
+  // Range: -Math.PI/5 to Math.PI/5 (about ±36° for subtle effect)
+  targetRotation.y = mouseX * Math.PI / 5;
+  targetRotation.x = mouseY * Math.PI / 5;
+}
+
+window.addEventListener("mousemove", onMouseMove);
+
 // --- Animation loop ---
 function animate() {
   requestAnimationFrame(animate);
   controls.update(); // required for damping to work
+
+  // Apply mouse-following rotation to the model if loaded
+  if (object) {
+    // Smoothly interpolate currentRotation towards targetRotation
+    currentRotation.x += (targetRotation.x - currentRotation.x) * rotationSpeed;
+    currentRotation.y += (targetRotation.y - currentRotation.y) * rotationSpeed;
+
+    // Set rotation (relative to initial orientation)
+    object.rotation.x = currentRotation.x;
+    object.rotation.y = currentRotation.y;
+  }
+
   renderer.render(scene, camera);
 }
 
@@ -121,8 +149,5 @@ window.addEventListener("resize", function () {
 });
 
 animate();
-
-
-
 
 
