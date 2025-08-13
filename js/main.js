@@ -64,10 +64,10 @@ document.getElementById("container3D").appendChild(renderer.domElement);
 
 // --- LIGHTING SETUP ---
 // Key Light - strong white from above and side
-const keyLight = new THREE.DirectionalLight(0xffffff, 0.8);
-keyLight.position.set(2, 8, 6);
-keyLight.castShadow = true;
-scene.add(keyLight);
+// const keyLight = new THREE.DirectionalLight(0xffffff, 0.8);
+// keyLight.position.set(2, 8, 6);
+// keyLight.castShadow = true;
+// scene.add(keyLight);
 
 // Fill Light - softer, opposite side
 const fillLight = new THREE.DirectionalLight(0xffffff, 0.5);
@@ -121,6 +121,7 @@ window.addEventListener("resize", function () {
 });
 
 animate();
+
 
 
 
