@@ -20,7 +20,9 @@ const camera = new THREE.OrthographicCamera(
 camera.position.set(10, 10, 10);
 camera.lookAt(0, 0, 0);
 
+// Set a light neutral background for contrast against black model
 const scene = new THREE.Scene();
+scene.background = new THREE.Color(0xe0e0e0);
 
 let object;
 let controls;
@@ -28,14 +30,23 @@ const loader = new GLTFLoader();
 
 // --- Load the model and set correct orientation ---
 loader.load(
-  `./BlenderLogov6-1.glb`,
+  `./richard_savage_voice_logo.glb`,
   function (gltf) {
     object = gltf.scene;
     object.scale.set(1, 1, 1);
 
     // Set model orientation: convert Blender Z-up to Three.js Y-up
-    // Usually -90 degrees (or -Math.PI/2) rotation around X
     object.rotation.x = -Math.PI / 2;
+
+    // OPTIONAL: tweak material for better highlight on black surfaces
+    object.traverse((child) => {
+      if (child.isMesh) {
+        if (child.material) {
+          child.material.roughness = 0.3; // Lower roughness for more specular highlight
+          child.material.metalness = 0.4; // Subtle metallic, helps reflect light
+        }
+      }
+    });
 
     scene.add(object);
   },
@@ -52,17 +63,35 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 
 document.getElementById("container3D").appendChild(renderer.domElement);
 
-// Less intense lighting
-const topLight = new THREE.DirectionalLight(0xffffff, 1); // Lowered intensity
-topLight.position.set(500, 500, 500);
-topLight.castShadow = true;
-scene.add(topLight);
+// --- LIGHTING SETUP ---
+// Key Light - strong white from above and side
+const keyLight = new THREE.DirectionalLight(0xffffff, 1.2);
+keyLight.position.set(2, 8, 6);
+keyLight.castShadow = true;
+scene.add(keyLight);
 
-const ambientLight = new THREE.AmbientLight(0x333333, 1); // Lowered intensity
+// Fill Light - softer, opposite side
+const fillLight = new THREE.DirectionalLight(0xffffff, 0.5);
+fillLight.position.set(-4, 2, 2);
+scene.add(fillLight);
+
+// Rim/Back Light - from behind for silhouette highlight
+const rimLight = new THREE.DirectionalLight(0xffffff, 0.7);
+rimLight.position.set(0, 5, -10);
+scene.add(rimLight);
+
+// Ambient Light - subtle grey to soften shadows
+const ambientLight = new THREE.AmbientLight(0x404040, 0.6);
 scene.add(ambientLight);
 
+// OPTIONAL: Spotlight from above for extra focus (can be commented out)
+// const spotLight = new THREE.SpotLight(0xffffff, 0.4);
+// spotLight.position.set(0, 10, 0);
+// spotLight.angle = Math.PI / 6;
+// spotLight.penumbra = 0.3;
+// scene.add(spotLight);
+
 // --- ORBIT CONTROLS ---
-// Let OrbitControls handle all orbiting (drag to rotate, scroll to zoom if enabled)
 controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
 controls.dampingFactor = 0.08;
@@ -93,4 +122,3 @@ window.addEventListener("resize", function () {
 });
 
 animate();
-
