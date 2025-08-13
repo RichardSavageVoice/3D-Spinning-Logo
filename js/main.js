@@ -112,8 +112,8 @@ function onMouseMove(event) {
 
   // Map mouseX to rotation around Y axis, mouseY to rotation around X axis
   // Range: -Math.PI/5 to Math.PI/5 (about ±36° for subtle effect)
-  targetRotation.y = mouseX * Math.PI / 5;
-  targetRotation.x = mouseY * Math.PI / 5;
+  targetRotation.y = mouseX * Math.PI / 4;
+  targetRotation.x = mouseY * Math.PI / 4;
 }
 
 window.addEventListener("mousemove", onMouseMove);
@@ -149,6 +149,7 @@ window.addEventListener("resize", function () {
 });
 
 animate();
+
 
 
 
