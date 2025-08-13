@@ -30,7 +30,7 @@ const loader = new GLTFLoader();
 
 // --- Load the model and set correct orientation ---
 loader.load(
-  `./richard_savage_voice_logo.glb`,
+  `./models/richard_savage_voice_logo/scene.gltf`,
   function (gltf) {
     object = gltf.scene;
     object.scale.set(1, 1, 1);
@@ -122,3 +122,4 @@ window.addEventListener("resize", function () {
 });
 
 animate();
+
